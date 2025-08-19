@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get "pass_rentals/index"
+  get "pass_rentals/show"
+  get "pass_rentals/new"
+  get "pass_rentals/create"
+  get "pass_rentals/edit"
+  get "pass_rentals/update"
+  get "pass_rentals/destroy"
   get "home/index"
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
