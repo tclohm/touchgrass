@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "bookings/index"
+  get "bookings/create"
   get "pass_rentals/index"
   get "pass_rentals/show"
   get "pass_rentals/new"
