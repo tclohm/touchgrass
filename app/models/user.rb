@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :bookings, dependent: :destroy
   has_one_attached :government_id
 
-  validaes :phone_number, presence: true, format: { with: /A\d{10}\z/, message: "must be 10 digits"}
+  validates :phone_number, presence: true, format: { with: /A\d{10}\z/, message: "must be 10 digits"}
 
   scope :verified, -> { where(phone_verified: true, government_id_verified: true) }
 
