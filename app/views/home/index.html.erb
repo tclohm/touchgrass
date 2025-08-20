@@ -1,2 +1,31 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg mb-8">
+  <h1 class="text-4xl font-bold mb-4">Rent Disneyland Annual Passes</h1>
+  <p class="text-xl mb-6">Share the magic! Rent out your annual pass when you're not using it.</p>
+  <% unless user_signed_in? %>
+    <%= link_to "Get Started", new_user_registration_path, class: "bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition" %>
+  <% end %>
+</div>
+
+<h2 class="text-2xl font-bold mb-6">Available Passes</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <% @available_passes.each do |pass| %>
+    <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition">
+      <h3 class="text-lg font-semibold mb-4">Pass Rental</h3>
+      <div class="space-y-2 mb-4">
+        <p><span class="font-medium">Dates:</span> <%= pass.start_date %> - <%= pass.end_date %></p>
+        <p><span class="font-medium">Price:</span> <span class="text-green-600 font-bold">$<%= pass.price %></span> total</p>
+        <p><span class="font-medium">Duration:</span> <%= pass.days %> days</p>
+      </div>
+      <%= link_to "View Details", pass, class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition" %>
+    </div>
+  <% end %>
+</div>
+
+<% if @available_passes.empty? %>
+  <div class="text-center py-12">
+    <p class="text-gray-500 text-xl mb-4">No passes available right now.</p>
+    <% if user_signed_in? %>
+      <%= link_to "List Your Pass", new_pass_rental_path, class: "bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition" %>
+    <% end %>
+  </div>
+<% end %>
