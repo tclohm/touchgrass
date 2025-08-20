@@ -4,8 +4,16 @@ one:
   user: one
   pass_rental: one
   status: MyString
+  security_deposit: 9.99
+  deposit_status: MyString
+  government_id_verified: false
+  phone_verified: false
 
 two:
   user: two
   pass_rental: two
   status: MyString
+  security_deposit: 9.99
+  deposit_status: MyString
+  government_id_verified: false
+  phone_verified: false
